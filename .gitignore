@@ -148,3 +148,6 @@ gen
 
 # ts-barcodes verification output
 /gen/
+
+# macOS
+.DS_Store

@@ -22,6 +22,8 @@ import { QrCode } from "../src/twod/qrcode.js";
 import { DataMatrix } from "../src/twod/datamatrix.js";
 import { Pdf417 } from "../src/twod/pdf417.js";
 import { Aztec } from "../src/twod/aztec.js";
+import { Imb } from "../src/postal/imb.js";
+import { Rm4scc } from "../src/postal/rm4scc.js";
 
 const OUT = new URL("../gen/", import.meta.url).pathname;
 mkdirSync(OUT, { recursive: true });
@@ -60,6 +62,8 @@ const cases: Case[] = [
   },
   { name: "aztec", make: () => Aztec.encode("HELLO AZTEC 2026"), scale: 5 },
   { name: "aztec_long", make: () => Aztec.encode("Hello, Aztec Code! 1234567890"), scale: 5 },
+  { name: "imb", make: () => Imb.encode("01234567094987654321-01234567891"), scale: 3 },
+  { name: "rm4scc", make: () => Rm4scc.encode("SN34RD1A"), scale: 3 },
 ];
 
 for (const c of cases) {
