@@ -1,0 +1,71 @@
+{
+  "name": "@ashaffah/barcodes",
+  "version": "0.1.0",
+  "description": "Universal bar/QR code generation library for TypeScript & JavaScript — zero dependencies, works in browser, Node and Deno.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "typecheck": "tsc --noEmit",
+    "verify": "tsx scripts/gen.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "barcode",
+    "qrcode",
+    "ean",
+    "ean13",
+    "upc",
+    "code128",
+    "code39",
+    "code93",
+    "codabar",
+    "itf",
+    "gs1",
+    "databar",
+    "pdf417",
+    "datamatrix",
+    "aztec",
+    "postal",
+    "imb",
+    "rm4scc",
+    "svg"
+  ],
+  "author": "ashaffah",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashaffah/ts-barcodes.git"
+  },
+  "homepage": "https://github.com/ashaffah/ts-barcodes#readme",
+  "bugs": {
+    "url": "https://github.com/ashaffah/ts-barcodes/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
