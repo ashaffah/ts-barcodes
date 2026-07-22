@@ -59,11 +59,6 @@ if (bc.data.kind === "linear") {
 ean.toSVG({ moduleSize: 6, foreground: "#111", background: "#fff", linearQuiet: 20 });
 ```
 
-The generated `<svg>` has a `viewBox` and `style="max-width:100%;height:auto"`, so it
-keeps its intrinsic size but scales **down** to fit a narrower container while
-preserving aspect ratio. To let it grow to fill a wider container, override with
-CSS — `svg { width: 100%; height: auto; }`.
-
 ### QR options
 
 `QrCode.encode()` uses sensible defaults (ECC Medium, automatic version and

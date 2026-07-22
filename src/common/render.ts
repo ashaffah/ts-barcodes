@@ -42,7 +42,7 @@ function renderLinear(data: Extract<BarcodeData, { kind: "linear" }>, o: typeof 
 
   let s =
     `<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="${totalHeight}" ` +
-    `viewBox="0 0 ${totalWidth} ${totalHeight}" style="max-width:100%;height:auto">` +
+    `viewBox="0 0 ${totalWidth} ${totalHeight}">` +
     `<rect width="${totalWidth}" height="${totalHeight}" fill="${o.background}"/>`;
 
   // Merge consecutive dark modules into a single rect for compact output.
@@ -68,7 +68,7 @@ function renderMatrix(data: Extract<BarcodeData, { kind: "matrix" }>, o: typeof 
 
   let s =
     `<svg xmlns="http://www.w3.org/2000/svg" width="${pxWidth}" height="${pxHeight}" ` +
-    `viewBox="0 0 ${pxWidth} ${pxHeight}" style="max-width:100%;height:auto">` +
+    `viewBox="0 0 ${pxWidth} ${pxHeight}">` +
     `<rect width="${pxWidth}" height="${pxHeight}" fill="${o.background}"/>`;
 
   for (let row = 0; row < height; row++) {
