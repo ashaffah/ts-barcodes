@@ -29,12 +29,12 @@ import { Ean13, QrCode, toSVG } from "@ashaffah/barcodes";
 
 // Linear
 const ean = Ean13.encode("5901234123457");
-const svg = ean.toSVG();                 // -> "<svg ...>...</svg>"
-console.log(ean.data.kind);              // "linear"
+const svg = ean.toSVG(); // -> "<svg ...>...</svg>"
+console.log(ean.data.kind); // "linear"
 
 // QR (auto numeric/alphanumeric/byte selection)
 const qr = QrCode.encode("https://example.com");
-console.log(qr.data.kind);               // "matrix"
+console.log(qr.data.kind); // "matrix"
 ```
 
 ### Raw modules
@@ -49,7 +49,7 @@ if (qr.data.kind === "matrix") {
 
 const bc = Ean13.encode("5901234123457");
 if (bc.data.kind === "linear") {
-  const { bars, height } = bc.data;           // bars[i] === true → dark bar
+  const { bars, height } = bc.data; // bars[i] === true → dark bar
 }
 ```
 
@@ -58,6 +58,11 @@ if (bc.data.kind === "linear") {
 ```ts
 ean.toSVG({ moduleSize: 6, foreground: "#111", background: "#fff", linearQuiet: 20 });
 ```
+
+The generated `<svg>` has a `viewBox` and `style="max-width:100%;height:auto"`, so it
+keeps its intrinsic size but scales **down** to fit a narrower container while
+preserving aspect ratio. To let it grow to fill a wider container, override with
+CSS — `svg { width: 100%; height: auto; }`.
 
 ### QR options
 
@@ -72,30 +77,30 @@ QrCode.encode("payload", { ecl: Ecc.HIGH, minVersion: 5, mask: 3 });
 // Native API with getModule():
 const q = QrCode.encodeText("payload", { ecl: Ecc.QUARTILE });
 q.getModule(0, 0); // boolean
-q.version;         // 1..40
+q.version; // 1..40
 ```
 
 ## Supported symbologies
 
-| Symbology                   | Class                | Verified with     |
-| --------------------------- | -------------------- | ----------------- |
-| EAN-13                      | `Ean13`              | ZXing + zbar      |
-| EAN-8                       | `Ean8`               | ZXing + zbar      |
-| UPC-A                       | `UpcA`               | ZXing + zbar      |
-| UPC-E                       | `UpcE`               | ZXing + zbar      |
-| Code 128 (A/B/C)            | `Code128`            | ZXing + zbar      |
-| Code 39                     | `Code39`             | ZXing + zbar      |
-| Code 93                     | `Code93`             | ZXing + zbar      |
-| Codabar                     | `Codabar`            | ZXing + zbar      |
-| ITF (Interleaved 2 of 5)    | `Itf`                | ZXing + zbar      |
-| GS1-128                     | `Gs1_128`            | ZXing + zbar      |
-| GS1 DataBar Omnidirectional | `DataBar`            | ZXing + zbar      |
-| QR Code (Model 2)           | `QrCode`             | ZXing + zbar      |
-| Data Matrix (ECC 200)       | `DataMatrix`         | ZXing + dmtxread  |
-| PDF417                      | `Pdf417`             | ZXing             |
-| Aztec Code                  | `Aztec`              | ZXing             |
-| USPS Intelligent Mail (IMb) | `Imb`                | zint + USPS vector|
-| Royal Mail RM4SCC           | `Rm4scc`             | zint              |
+| Symbology                   | Class        | Verified with      |
+| --------------------------- | ------------ | ------------------ |
+| EAN-13                      | `Ean13`      | ZXing + zbar       |
+| EAN-8                       | `Ean8`       | ZXing + zbar       |
+| UPC-A                       | `UpcA`       | ZXing + zbar       |
+| UPC-E                       | `UpcE`       | ZXing + zbar       |
+| Code 128 (A/B/C)            | `Code128`    | ZXing + zbar       |
+| Code 39                     | `Code39`     | ZXing + zbar       |
+| Code 93                     | `Code93`     | ZXing + zbar       |
+| Codabar                     | `Codabar`    | ZXing + zbar       |
+| ITF (Interleaved 2 of 5)    | `Itf`        | ZXing + zbar       |
+| GS1-128                     | `Gs1_128`    | ZXing + zbar       |
+| GS1 DataBar Omnidirectional | `DataBar`    | ZXing + zbar       |
+| QR Code (Model 2)           | `QrCode`     | ZXing + zbar       |
+| Data Matrix (ECC 200)       | `DataMatrix` | ZXing + dmtxread   |
+| PDF417                      | `Pdf417`     | ZXing              |
+| Aztec Code                  | `Aztec`      | ZXing              |
+| USPS Intelligent Mail (IMb) | `Imb`        | zint + USPS vector |
+| Royal Mail RM4SCC           | `Rm4scc`     | zint               |
 
 ## Input notes
 
