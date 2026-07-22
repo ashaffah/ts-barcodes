@@ -41,7 +41,7 @@ function renderLinear(data: Extract<BarcodeData, { kind: "linear" }>, o: typeof 
   const totalHeight = height + 2 * quiet;
 
   let s =
-    `<svg xmlns="http://www.w3.org/2000/svg" ` +
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="${totalHeight}" ` +
     `viewBox="0 0 ${totalWidth} ${totalHeight}" style="max-width:100%;height:auto">` +
     `<rect width="${totalWidth}" height="${totalHeight}" fill="${o.background}"/>`;
 
@@ -67,7 +67,7 @@ function renderMatrix(data: Extract<BarcodeData, { kind: "matrix" }>, o: typeof 
   const pxHeight = height * m + 2 * quiet;
 
   let s =
-    `<svg xmlns="http://www.w3.org/2000/svg" ` +
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${pxWidth}" height="${pxHeight}" ` +
     `viewBox="0 0 ${pxWidth} ${pxHeight}" style="max-width:100%;height:auto">` +
     `<rect width="${pxWidth}" height="${pxHeight}" fill="${o.background}"/>`;
 
