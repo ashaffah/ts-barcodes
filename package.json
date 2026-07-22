@@ -1,6 +1,6 @@
 {
   "name": "@ashaffah/barcodes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Universal bar/QR code generation library for TypeScript & JavaScript — zero dependencies, works in browser, Node and Deno.",
   "type": "module",
   "main": "./dist/index.cjs",
